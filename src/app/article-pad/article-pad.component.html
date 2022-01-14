@@ -1,0 +1,10 @@
+<div class="container">
+  <ng-container
+    *ngFor="let i of articles|async"
+  >
+    <app-artictle-cell [article]="i">
+    </app-artictle-cell>
+  </ng-container>
+
+
+</div>

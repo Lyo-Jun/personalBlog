@@ -1,0 +1,43 @@
+.heading{
+  background-color: dodgerblue	;
+  width:100%;
+  height: 3.5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center ;
+}
+.item{
+
+  padding: 0.2rem  0.5rem;
+  font-size: 1.5rem;
+  color: white;
+  border-radius:  0.5rem;
+  &:hover{
+    background-color: cornflowerblue;
+    cursor: pointer;
+  }
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+
+}
+.con{
+  display: flex ;
+}
+.con{
+  .item{
+    margin: 0rem 1.5rem;
+  }
+}
+
+.searchbar{
+  outline: none;
+  height: 2rem;
+  padding-left: .5rem;
+  width:10rem;
+  border-radius: 1rem;
+  border:0 solid #2a39ff ;
+
+}
