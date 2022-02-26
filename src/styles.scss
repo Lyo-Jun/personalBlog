@@ -1,6 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-*{
+@import "prismjs/themes/prism.min.css";
+@import 'prismjs/themes/prism-okaidia.css';
+@import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+@import 'prismjs/plugins/line-highlight/prism-line-highlight.css';
+
+
+
+* {
   padding: 0;
   margin: 0;
-  font-family: "PingFang SC";
+  font-family: "PingFang HK";
 }
+
+body {
+  background-color: #f9f9f9;
+
+}
+
+$myGray: rgb(217 217 217);
+
+

@@ -1,8 +1,85 @@
-.container{
-  margin: 0.5rem .5rem .5rem .5rem;
-  border: .1rem solid ;
+.container {
+  margin: .75rem 1rem;
   border-radius: .6rem;
   padding: .5rem;
+  background-color: white;
+  height: 7rem;
+  max-width: 50rem;
+  min-width: 10rem;
+  border: rgb(217 217 217) 1px solid !important;
+  &:hover{
+    border: dodgerblue 1px solid !important;
+  }
+}
+
+
+.heading {
+  font-size: 1.2rem;
+  color: mediumpurple;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  .title {
+    font-weight: bold;
+  }
+
+  .title:hover {
+    cursor: pointer;
+    color: blueviolet;
+  }
+
+  .release-time {
+    font-size: .9rem;
+    color: brown;
+    vertical-align: top;
+  }
+
+  @media screen and (max-width: 800px) {
+    .release-time {
+      display: none;
+    }
+  }
+}
+
+.description {
+
+  font-size: 1.1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+}
+
+@media screen and (max-width: 600px) {
+  .tag:nth-child(-n+2) {
+    display: none;
+  }
+}
+
+
+.tags {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: end;
+  height: 1.5rem;
+  margin-top: .6rem;
+}
+
+.tag {
+  margin: 0 .3rem;
+  background-color: white;
+  color: dodgerblue;
+  border-radius: .5rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  border: 1px solid  rgb(217 217 217);
+
   &:hover {
+    cursor: pointer;
+    color: deepskyblue;
   }
 }

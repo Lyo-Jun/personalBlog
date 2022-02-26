@@ -1,5 +1,93 @@
-.container{
-  display: flex;
-  flex-flow: column nowrap;
-  background-color: gray;
+.container {
+  display: grid;
+  grid-template-columns: minmax(10rem, 50rem);
+  place-content: center;
+}
+
+.pagination-option {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+}
+
+.dropdown {
+  outline: none;
+  height: 1.8rem;
+  border-radius: .5rem;
+  border: 1px solid rgb(217 217 217);
+  margin-right: .5rem;
+  color : #4d6ef2;
+  font-size: 1.02rem;
+}
+
+
+::ng-deep {
+  .ngx-pagination {
+    margin-bottom: 0 !important;
+  }
+
+  .ngx-pagination li {
+
+  }
+
+
+  .ngx-pagination a,
+  .ngx-pagination button {
+    background-color: white !important;
+    color: #4d6ef2 !important;
+    border: rgb(217 217 217) 1px solid !important;
+    border-radius: .5rem !important;
+    margin: .2rem;
+  }
+
+  .ngx-pagination a:hover,
+  .ngx-pagination button:hover {
+    background: #4d6ef2 !important;
+    color: white !important;
+  }
+
+  .ngx-pagination .current {
+
+    background: #4d6ef2 !important;
+    color: white !important;
+    border: rgb(217 217 217) 1px solid !important;
+    border-radius: .5rem !important;
+    margin: .2rem;
+
+  }
+
+  .ngx-pagination .disabled {
+    display: none !important;
+  }
+
+  .ngx-pagination .disabled:hover {
+
+  }
+
+
+  .ngx-pagination .pagination-previous a::before,
+  .ngx-pagination .pagination-previous.disabled::before {
+
+  }
+
+  .ngx-pagination .pagination-next a::after,
+  .ngx-pagination .pagination-next.disabled::after {
+
+
+  }
+
+  .ngx-pagination .show-for-sr {
+
+  }
+
+  .ngx-pagination .small-screen {
+
+  }
+
+
+}
+.dont-display{
+  display: none;
 }

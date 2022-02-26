@@ -1,7 +1,11 @@
 <div class="heading">
+  <div class="toggle-button">
+
+  </div>
+
   <div class="con">
-    <div class="item" *ngFor="let item of items">
-      {{item}}
+    <div class="item" *ngFor="let item of items" [routerLink]="item[1]">
+      {{item[0]}}
     </div>
   </div>
   <input type="text" class="searchbar"
@@ -12,3 +16,4 @@
 </div>
 
 <router-outlet></router-outlet>
+

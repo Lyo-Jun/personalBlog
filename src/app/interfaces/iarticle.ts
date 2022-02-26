@@ -4,4 +4,5 @@ export interface IArticle {
   description: string
   releaseTime: string
   tags: string[]
+  content:string
 }

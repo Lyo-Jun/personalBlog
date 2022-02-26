@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ArticleService} from "../services/article-service.service";
 import {IArticle} from "../interfaces/iarticle";
-import {map, Observable, pipe, switchMap} from "rxjs";
-import {ActivatedRoute} from "@angular/router";
+import {map, Observable, switchMap, tap} from "rxjs";
+import {ActivatedRoute, ParamMap} from "@angular/router";
 
 @Component({
   selector: 'app-article-pad',
@@ -11,6 +11,8 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ArticlePadComponent implements OnInit {
   articles: Observable<IArticle[]>
+  currentPage: number
+  itemsPerPage: number = 5
 
   constructor(public articleService: ArticleService,
               public activatedRoute: ActivatedRoute) {
@@ -19,13 +21,17 @@ export class ArticlePadComponent implements OnInit {
   ngOnInit(): void {
     this.articles = this.activatedRoute.queryParamMap
       .pipe(
-        switchMap(o => {
+        switchMap((o) => {
           let searchContent = o.get('search') ?? ''
           return this.articleService.articles$.pipe(
-            map(o => o.filter(x => x.title.includes(searchContent)))
+            map(
+              (o) =>
+                o.filter(x => x.title.includes(searchContent)))
           )
-        })
+        }),
+        tap(() => this.currentPage = 1)
       )
   }
+
 
 }

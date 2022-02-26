@@ -1,6 +1,19 @@
 <div class="container">
-{{article.title}}
 
+  <div class="heading">
+    <span class="title"> {{article.title}}</span>
+    <span class="release-time">{{article.releaseTime}}</span>
+  </div>
+  <div class="description">
+    {{  article.description}}
+  </div>
+  <div class="tags">
 
+    <div *ngFor="let tag of article.tags"
+         class="tag"
+    >
+      {{tag}}
+    </div>
+  </div>
 
 </div>

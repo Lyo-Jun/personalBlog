@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -7,18 +7,19 @@ import {Router} from "@angular/router";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  items:string[]=['文章','分类','与我联系']
-  searchContent:string
+  items: [string,string][] = [['文章','articles'], ['分类','category'], ['与我联系','contact-me']]
+  searchContent: string
 
-  constructor(public router:Router) {
+  constructor(public router: Router) {
   }
-  search():void{
+
+  search(): void {
     console.log('haha')
     this.router.navigate(
       ['articles'],
       {
-        queryParams:{
-          search:this.searchContent
+        queryParams: {
+          search: this.searchContent
         }
       })
 

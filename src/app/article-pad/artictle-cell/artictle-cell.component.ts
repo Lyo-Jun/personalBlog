@@ -7,12 +7,16 @@ import {IArticle} from "../../interfaces/iarticle";
   styleUrls: ['./artictle-cell.component.scss']
 })
 export class ArtictleCellComponent implements OnInit {
-  @Input() article:IArticle
+  @Input() article: IArticle
 
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+
+
   }
 
 }
+
