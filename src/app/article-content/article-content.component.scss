@@ -1,12 +1,40 @@
 
+
+.center-helper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .container {
-  max-width: 900px;
-  margin-left: .5rem;
+  max-width: 650px;
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: white;
+  border: rgb(217 217 217) 1px solid !important;
+  border-radius: 5px;
+  padding-bottom: 1.5rem;
+  .button{
+    margin-top: 3rem;
+    align-self: center;
+    height: 2rem;
+    width: 6rem;
+  }
+  .markdown-body{
+    align-self: stretch;
+    flex: 1 1 ;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
 }
 
 
 ::ng-deep {
-  #markdown {
+  .markdown-body {
 
 
     body {
@@ -23,7 +51,8 @@
         margin: 10px auto;
       }
     }
-    .operator{
+
+    .operator {
       background-color: inherit;
     }
 
@@ -34,7 +63,7 @@
     }
 
     h1, h2, h3, h4, h5 {
-      font-family: Georgia, Palatino, serif,"PingFang SC";
+      font-family: Georgia, Palatino, serif, "PingFang SC";
     }
 
     h1, h2, h3, h4, h5, p, dl {
@@ -107,6 +136,10 @@
       list-style-type: lower-roman;
     }
 
+    ol {
+      margin-left: 1rem;
+    }
+
     /*pre {
         padding: 0px 24px;
         max-width: 800px;
@@ -126,7 +159,7 @@
     }
 
     blockquote {
-      border-left: .5em solid #eee;
+      border-left: .5em solid darkorange;
       padding: 0 0 0 2em;
       margin-left: 0;
     }
@@ -134,7 +167,7 @@
     blockquote cite {
       font-size: 14px;
       line-height: 20px;
-      color: #bfbfbf;
+      color: orange;
     }
 
     blockquote cite:before {
@@ -142,7 +175,7 @@
     }
 
     blockquote p {
-      color: #666;
+      color: darkorange;
     }
 
     hr {
@@ -433,25 +466,23 @@
     }
 
 
-    code:not(code[class]){
-      background-color: rgba(255,182,193,.3);
+    code:not(code[class]) {
+      background-color: rgba(255, 182, 193, .3);
       border-radius: .5rem;
       padding-left: .3rem;
       padding-right: .3rem;
       color: hotpink;
     }
-    ::ng-deep{
-      pre
-      {
-        code
-        {
-          span{
+
+    ::ng-deep {
+      pre {
+        code {
+          span {
             font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
           }
         }
       }
     }
-
 
 
   }

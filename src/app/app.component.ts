@@ -7,14 +7,16 @@ import {Router} from "@angular/router";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  items: [string,string][] = [['文章','articles'], ['分类','category'], ['与我联系','contact-me']]
-  searchContent: string
+  items: [string, string][] = [['文章', 'articles'], ['分类', 'category'], ['与我联系', 'contact-me']]
+  searchContent: string;
+  isHamburgerMenuOpen: boolean = false;
 
   constructor(public router: Router) {
   }
 
   search(): void {
-    console.log('haha')
+    this.isHamburgerMenuOpen=false;
+
     this.router.navigate(
       ['articles'],
       {

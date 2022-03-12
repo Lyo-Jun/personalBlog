@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {Observable, shareReplay} from "rxjs";
 import {IArticle} from "../interfaces/iarticle";
 import {HttpClient} from "@angular/common/http";
@@ -7,13 +7,14 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class ArticleService {
-  private uri: string = 'https://localhost:7159/api/articles'
-  articles$: Observable<IArticle[]> = this.http.get<IArticle[]>(this.uri)
+
+  articles$: Observable<IArticle[]> = this.http.get<IArticle[]>(this.apiurl + '/faker/a')
     .pipe(
       shareReplay()
-    )
+    );
 
-  constructor(public http: HttpClient) {
+  constructor(private http: HttpClient,
+              @Inject('APIURL') private apiurl: string) {
   }
 
 }

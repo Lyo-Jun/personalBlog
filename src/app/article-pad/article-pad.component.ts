@@ -5,7 +5,7 @@ import {map, Observable, switchMap, tap} from "rxjs";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 
 @Component({
-  selector: 'app-article-pad',
+  selector: 'app-article-content-pad',
   templateUrl: './article-pad.component.html',
   styleUrls: ['./article-pad.component.scss']
 })
@@ -23,11 +23,7 @@ export class ArticlePadComponent implements OnInit {
       .pipe(
         switchMap((o) => {
           let searchContent = o.get('search') ?? ''
-          return this.articleService.articles$.pipe(
-            map(
-              (o) =>
-                o.filter(x => x.title.includes(searchContent)))
-          )
+          return this.articleService.articles$;
         }),
         tap(() => this.currentPage = 1)
       )

@@ -1,8 +1,14 @@
+import {ICategory} from "./icategory";
+import {ITag} from "./Itag";
+
 export interface IArticle {
-  ID: string
-  title: string
-  description: string
-  releaseTime: string
-  tags: string[]
-  content:string
+  id: number;
+  name: string;
+  markdown: string;
+  isPublished: boolean;
+  createdTime: string;
+  lastModifiedTime: string;
+  description: string;
+  category: ICategory;
+  tags: ITag[];
 }

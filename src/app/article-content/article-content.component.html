@@ -1,0 +1,23 @@
+
+
+<div class="center-helper">
+<ng-container *ngIf="article$|async;else notFound ">
+  <div class="container">
+    <markdown class="markdown-body"
+              [data]="(article$ |async).markdown"></markdown>
+  </div>
+
+
+</ng-container>
+<ng-template #notFound>
+  <div class="container">
+    <markdown class="markdown-body"
+              [data]="placeHolder.markdown"></markdown>
+    <button class="button"
+      [routerLink]="''"
+    >
+      返回首页
+    </button>
+  </div>
+</ng-template>
+</div>

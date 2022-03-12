@@ -1,3 +1,13 @@
+
+@keyframes grayer {
+  0%{
+    background-color: white;
+  }
+  100%{
+    background-color: #f9f9f9;
+  }
+}
+
 .container {
   margin: .75rem 1rem;
   border-radius: .6rem;
@@ -8,14 +18,20 @@
   min-width: 10rem;
   border: rgb(217 217 217) 1px solid !important;
   &:hover{
-    border: dodgerblue 1px solid !important;
+    animation: grayer .3s  forwards;
+    cursor: pointer;
+
+    .title {
+      color: blueviolet;
+    }
   }
+
 }
 
 
 .heading {
   font-size: 1.2rem;
-  color: mediumpurple;
+  color: dodgerblue;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -24,10 +40,7 @@
     font-weight: bold;
   }
 
-  .title:hover {
-    cursor: pointer;
-    color: blueviolet;
-  }
+
 
   .release-time {
     font-size: .9rem;
@@ -51,7 +64,7 @@
   -webkit-line-clamp: 2; /* number of lines to show */
   line-clamp: 2;
   -webkit-box-orient: vertical;
-
+  text-indent: 2em;
 }
 
 @media screen and (max-width: 600px) {
@@ -71,7 +84,7 @@
 
 .tag {
   margin: 0 .3rem;
-  background-color: white;
+  background-color: transparent;
   color: dodgerblue;
   border-radius: .5rem;
   padding-left: .5rem;
@@ -79,6 +92,7 @@
   border: 1px solid  rgb(217 217 217);
 
   &:hover {
+
     cursor: pointer;
     color: deepskyblue;
   }
