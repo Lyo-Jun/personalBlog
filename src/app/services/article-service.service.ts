@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {Observable, shareReplay} from "rxjs";
 import {IArticle} from "../interfaces/iarticle";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,9 @@ export class ArticleService {
     );
 
   constructor(private http: HttpClient,
-              @Inject('APIURL') private apiurl: string) {
+              @Inject('API_URL') private apiurl: string) {
+
+
   }
 
 }

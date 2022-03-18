@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
+import {HttpParams} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,9 @@ export class AppComponent {
   }
 
   search(): void {
-    this.isHamburgerMenuOpen=false;
+    this.isHamburgerMenuOpen = false;
+
+
 
     this.router.navigate(
       ['articles'],

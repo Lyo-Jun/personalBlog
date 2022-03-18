@@ -2,13 +2,11 @@ import {ICategory} from "./icategory";
 import {ITag} from "./Itag";
 
 export interface IArticle {
-  id: number;
-  name: string;
-  markdown: string;
-  isPublished: boolean;
-  createdTime: string;
-  lastModifiedTime: string;
-  description: string;
-  category: ICategory;
-  tags: ITag[];
+  id?: number;
+  name?: string;
+  markdown?: string;
+  isPublished?: boolean;
+  createdTime?: string;
+  lastModifiedTime?: string;
+  description?: string;
 }

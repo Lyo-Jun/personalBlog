@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ArticleService} from "../services/article-service.service";
-import {IArticle} from "../interfaces/iarticle";
+import {ArticleService} from "../../services/article-service.service";
+import {IArticle} from "../../interfaces/iarticle";
 import {map, Observable, switchMap, tap} from "rxjs";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 

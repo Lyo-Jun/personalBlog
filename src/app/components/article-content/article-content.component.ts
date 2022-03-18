@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ArticleService} from "../services/article-service.service";
+import {ArticleService} from "../../services/article-service.service";
 import {ActivatedRoute} from "@angular/router";
-import {IArticle} from "../interfaces/iarticle";
+import {IArticle} from "../../interfaces/iarticle";
 import {combineLatestWith, map, Observable, of, tap} from "rxjs";
-import {isNull} from "@angular/compiler/src/output/output_ast";
+
 
 @Component({
   selector: 'app-article-content',
@@ -21,8 +21,7 @@ export class ArticleContentComponent implements OnInit {
     createdTime: new Date().toISOString(),
     lastModifiedTime: new Date().toISOString(),
     description: '错误提示',
-    category: null,
-    tags: null,
+
     markdown: `## 找不到文章(*>﹏<*)
 ---
 \`\`\`typescript

@@ -1,0 +1,15 @@
+.vertical{
+  display: flex;
+  flex-direction: column;
+
+}
+.navigation-button{
+  margin: 2rem 0;
+
+
+}
+.pad{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.5rem;
+}
