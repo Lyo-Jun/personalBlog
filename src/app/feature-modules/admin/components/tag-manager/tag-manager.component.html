@@ -1,0 +1,25 @@
+<div class="container">
+
+  <input class="input" [(ngModel)]="tagToAdd">
+  <button mat-raised-button color="accent" class="button"
+          (click)="addTag()"
+  >
+    新增标签
+  </button>
+  <button mat-raised-button color="accent" class="button"
+          (click)="refresh()"
+  >
+    刷新
+  </button>
+  <div *ngFor="let tag of (tags$|async) " class="list-item">
+    <div class="tag">  {{tag.name}}</div>
+
+    <button
+      (click)="deleteTag(tag.id,tag.name)"
+    >
+      删除
+    </button>
+  </div>
+
+
+</div>

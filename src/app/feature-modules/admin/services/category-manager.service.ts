@@ -6,7 +6,7 @@ import {ICategory} from "../../../interfaces/icategory";
 import {IArticle} from "../../../interfaces/iarticle";
 
 
-@Injectable({providedIn: AdminModule})
+@Injectable()
 export class CategoryManagerService {
 
   constructor(private http: HttpClient,

@@ -6,7 +6,7 @@ import {IArticle} from "../../../interfaces/iarticle";
 import {ITag} from "../../../interfaces/Itag";
 import {ICategory} from "../../../interfaces/icategory";
 
-@Injectable({providedIn: AdminModule})
+@Injectable()
 export class ArticleManagerService {
 
   constructor(private http: HttpClient,

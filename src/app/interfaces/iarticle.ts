@@ -9,4 +9,6 @@ export interface IArticle {
   createdTime?: string;
   lastModifiedTime?: string;
   description?: string;
+  tags?: ITag[];
+  category?: ICategory
 }

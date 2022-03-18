@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 import {ITag} from "../../../interfaces/Itag";
 import {IArticle} from "../../../interfaces/iarticle";
 
-@Injectable({providedIn: AdminModule})
+@Injectable()
 export class TagManagerService {
 
   constructor(private http: HttpClient,

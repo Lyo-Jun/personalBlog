@@ -7,14 +7,14 @@
     <span class="release-time">{{article.lastModifiedTime|date:'yyyy/MM/dd'}}</span>
   </div>
   <div class="description">
-    {{  article.description  }}
+    {{  article.markdown  }}
   </div>
   <div class="tags">
 
-    <div *ngFor="let x of[1,2,3,4]"
+    <div *ngFor="let tag of article.tags"
          class="tag"
     >
-      {{x}}
+      {{tag.name}}
     </div>
   </div>
 

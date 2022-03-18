@@ -33,7 +33,7 @@ const routes: Routes = [
   {path: 'category', component: ArticleContentComponent},
   {
     path: 'admin', canActivate: [AdminGuard],
-    loadChildren: () => import('./feature_modules/admin/admin.module').then(m => m.AdminModule)
+    loadChildren: () => import('./feature-modules/admin/admin.module').then(m => m.AdminModule)
   }
 ]
 

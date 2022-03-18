@@ -11,8 +11,7 @@ export class ArtictleCellComponent implements OnInit {
   @Input() article: IArticle
 
 
-  constructor(public router: Router,
-              @Inject('APIURL') apiurl: string) {
+  constructor(public router: Router) {
   }
 
   ngOnInit(): void {

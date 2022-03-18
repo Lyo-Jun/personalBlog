@@ -1,0 +1,57 @@
+<div style="padding: 1.5rem">
+  <label>
+    文章集合名称
+  </label>
+  <input type="text" [(ngModel)]="newTitle">
+  <br>
+  <label>
+    集合描述
+  </label>
+  <input type="text" [(ngModel)]="newDescription">
+  <button mat-raised-button color="accent"
+    (click)="createANewCategory()"
+  >
+    新增
+  </button>
+  <button mat-raised-button color="primary"
+          (click)="refresh()"
+  >
+    刷新
+  </button>
+
+  <mat-accordion>
+    <ng-container *ngFor="let cat of categories$ |async">
+      <mat-expansion-panel
+        (opened)="select(cat.id)"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <button mat-raised-button color="accent">{{cat.name}}</button>
+
+          </mat-panel-title>
+          <mat-panel-description>
+            <button mat-icon-button color="accent"
+                    (click)="$event.stopImmediatePropagation();
+        deleteOne(cat.id,cat.name)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <p>
+          概述: {{cat.description}}
+        </p>
+
+        <div *ngFor="let article of articles$|async">
+          <span>{{article.name}}</span>
+          <button mat-raised-button color="primary">{{cat.name}}</button>
+        </div>
+
+
+      </mat-expansion-panel>
+    </ng-container>
+  </mat-accordion>
+
+
+</div>

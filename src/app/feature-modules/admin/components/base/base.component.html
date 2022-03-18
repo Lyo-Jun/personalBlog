@@ -1,4 +1,4 @@
-<mat-drawer-container style="height:calc(100% - 3.5rem);" autosize>
+<mat-drawer-container style="min-height:calc(100% - 3.5rem);" autosize>
   <mat-drawer
     #sidenav
     mode="side"
@@ -7,22 +7,25 @@
 
     <div class="vertical">
       <button mat-flat-button class="navigation-button"
-        [routerLink]="['./article']" routerLinkActive="active"
-      >文章</button>
+              [routerLink]="['./article']" routerLinkActive="active"
+      >文章
+      </button>
 
       <button mat-flat-button class="navigation-button"
-              [routerLink]="['./tag']">标签</button>
+              [routerLink]="['./tag']">标签
+      </button>
 
       <button mat-flat-button class="navigation-button"
               [routerLink]="['./category']"
-      >分类</button>
+      >分类
+      </button>
 
     </div>
 
   </mat-drawer>
   <div class="pad">
     <button mat-fab color="primary"
-      (click)="sidenav.toggle()"
+            (click)="sidenav.toggle()"
     >
       <mat-icon>chrome_reader_mode</mat-icon>
     </button>
@@ -31,8 +34,6 @@
 
       </router-outlet>
     </div>
-
-
   </div>
 
 
