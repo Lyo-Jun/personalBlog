@@ -3,6 +3,8 @@ import {CategoryManagerService} from "../../services/category-manager.service";
 import {BehaviorSubject, Observable, Subject, switchMap} from "rxjs";
 import {ICategory} from "../../../../interfaces/icategory";
 import {IArticle} from "../../../../interfaces/iarticle";
+import {Router} from "@angular/router";
+import {ArticleManagerService} from "../../services/article-manager.service";
 
 @Component({
   selector: 'app-category-manager',
@@ -20,7 +22,9 @@ export class CategoryManagerComponent implements OnInit {
   newDescription: string = '';
 
 
-  constructor(private categoryManager: CategoryManagerService) {
+  constructor(private categoryManager: CategoryManagerService,
+              private router: Router,
+              private articleManager: ArticleManagerService) {
   }
 
   refresh(): void {
@@ -64,7 +68,7 @@ export class CategoryManagerComponent implements OnInit {
       this.newDescription = '';
       return;
     }
-    let confirmCreate = confirm('你确定要新建文章集合' + this.newTitle + '吗？');
+    let confirmCreate = confirm('你确定要新建文章集合\n' + this.newTitle + '\n吗？');
     if (!confirmCreate)
       return;
 
@@ -76,7 +80,32 @@ export class CategoryManagerComponent implements OnInit {
 
 
     setTimeout(() => this.refresh(), 50);
+  }
 
+
+  checkArticle(id: number): void {
+    const urlTree = this.router
+      .createUrlTree(['/article-detail']);
+
+    urlTree.queryParams = {
+      id: id
+    };
+
+    let address = this.router.serializeUrl(urlTree);
+    window.open(address);
+
+  }
+
+
+  deleteAnArticle(id: number, name: string): void {
+    let confirmDelete = confirm('你真的要删除文章'
+      + '\n' + name + '\n吗？');
+    if (!confirmDelete)
+      return;
+    this.articleManager
+      .deleteOne(id)
+      .subscribe();
+    setTimeout(() => this.refresh(), 50);
   }
 
 }

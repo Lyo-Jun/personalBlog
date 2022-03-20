@@ -1,0 +1,49 @@
+<div class="limit-width">
+
+
+<label> 标题</label>
+<input type="text" placeholder="标题" [(ngModel)]="articleToPost.name">
+<br>
+<label>markdown内容</label>
+
+<textarea [(ngModel)]="articleToPost.markdown">
+
+</textarea>
+
+
+<br>
+<label>描述</label>
+<input type="text" placeholder="描述" [(ngModel)]="articleToPost.description">
+
+<br>
+<label>分类</label>
+<select [(ngModel)]="catId">
+  <ng-container *ngIf="categories$|async as cats">
+    <option *ngFor="let cat of cats" [value]="cat.id">
+      {{cat.name}}
+    </option>
+  </ng-container>
+
+</select>
+
+<br>
+<ng-multiselect-dropdown
+  [(ngModel)]="seletedTags"
+  [data]="dropdownList$|async"
+  [settings]="dropdownSettings"
+>
+
+</ng-multiselect-dropdown>
+
+
+<button mat-raised-button color="accent"
+        (click)="createOne()"
+>点击提交
+</button>
+</div>
+
+<div class="container">
+  <markdown class="markdown-body"
+            [data]="articleToPost.markdown"></markdown>
+
+</div>

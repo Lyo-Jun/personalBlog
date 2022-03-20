@@ -1,1 +1,19 @@
-<p>article-manager works!</p>
+<div style="padding: 1.5rem">
+  <div class="buttons">
+    <button mat-raised-button color="accent" class="button"
+            (click)="changeComponent(1)"
+    >
+      列表
+    </button>
+    <button mat-raised-button color="accent" class="button"
+            (click)="changeComponent(2)"
+    >
+      新增
+    </button>
+
+  </div>
+  <ng-container *ngComponentOutlet="dynamicComponent">
+  </ng-container>
+
+
+</div>

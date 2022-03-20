@@ -14,6 +14,10 @@ import {TagManagerService} from "./services/tag-manager.service";
 import {FormsModule} from "@angular/forms";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {CategoryManagerService} from "./services/category-manager.service";
+import {AddArticleComponent} from './components/article-operation-helpers/add-article/add-article.component';
+import {ListArticleComponent} from './components/article-operation-helpers/list-article/list-article.component';
+import {MarkdownModule} from "ngx-markdown";
+import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
 
 const route: Routes = [
   {
@@ -33,6 +37,9 @@ const route: Routes = [
     BaseComponent,
     TagManagerComponent,
     CategoryManagerComponent,
+    AddArticleComponent,
+    ListArticleComponent,
+
 
   ],
   imports: [
@@ -44,6 +51,9 @@ const route: Routes = [
     MatButtonModule,
     FormsModule,
     MatExpansionModule,
+    MarkdownModule.forChild(),
+    NgMultiSelectDropDownModule.forRoot()
+
 
   ],
   providers: [

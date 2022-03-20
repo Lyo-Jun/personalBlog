@@ -1,11 +1,11 @@
-<div class="container"
+<div class="container "
      (click)="navigateToDetail()"
 >
 
-  <div class="heading">
-    <span class="title"> {{article.name }}</span>
-    <span class="release-time">{{article.lastModifiedTime|date:'yyyy/MM/dd'}}</span>
-  </div>
+    <div class="title"> {{article.name }}</div>
+    <div class="release-time">{{article.lastModifiedTime|date:'yyyy/MM/dd'}}
+    </div>
+
   <div class="description">
     {{  article.markdown  }}
   </div>
@@ -14,7 +14,7 @@
     <div *ngFor="let tag of article.tags"
          class="tag"
     >
-      {{tag.name}}
+      {{'#'+tag.name}}
     </div>
   </div>
 

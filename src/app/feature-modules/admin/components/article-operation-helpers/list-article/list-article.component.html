@@ -1,0 +1,8 @@
+<input type="text" (change)="research($event)"
+
+>
+<li *ngFor="let article of articles$|async" class="row">
+  <div> {{article.name  }} </div>
+  <button (click)="checkAnArticle(article.id)">查看</button>
+  <button>删除</button>
+</li>

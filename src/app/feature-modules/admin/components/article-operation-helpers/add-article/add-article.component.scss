@@ -1,81 +1,6 @@
-@media screen and (max-width: 810px) {
-
-  .sidebar {
-    display: none;
-  }
-  .description{
-    display: none;
-  }
+.limit-width{
+  max-width: 700px;
 }
-
-.center-helper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.header {
-  background-color: rgba(255, 182, 193, .3);
-  border-radius: .5rem;
-  padding-left: .3rem;
-  padding-right: .3rem;
-  color: hotpink;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
-}
-
-.text {
-  background-color: rgba(245, 203, 159, 0.3);
-  border-radius: .5rem;
-  padding-left: .3rem;
-  padding-right: .3rem;
-  color: orange;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
-  word-break: break-all;
-
-}
-.btn{
-  background-color: rgba(245, 159, 159, 0.3);
-  border-radius: .5rem;
-  padding-left: .3rem;
-  padding-right: .3rem;
-  color: #ff0026;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
-  &:hover{
-    cursor: pointer;
-  }
-}
-
-
-.link {
-  &:hover {
-    color: dodgerblue;
-    cursor: pointer;
-
-  }
-}
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-
-  margin-left: 1rem;
-
-  max-width: 280px;
-
-}
-
-.description {
-  margin-top: 1rem;
-  background-color: white;
-  border: rgb(217 217 217) 1px solid !important;
-  border-radius: 5px;
-  padding: .5rem;
-}
-
 .container {
   max-width: 700px;
   margin-top: 1rem;
@@ -88,18 +13,15 @@
   border: rgb(217 217 217) 1px solid !important;
   border-radius: 5px;
   padding-bottom: 1.5rem;
-  flex-shrink: 1;
-
-  .button {
+  .button{
     margin-top: 3rem;
     align-self: center;
     height: 2rem;
     width: 6rem;
   }
-
-  .markdown-body {
+  .markdown-body{
     align-self: stretch;
-    flex: 1 1;
+    flex: 1 1 ;
     flex-grow: 1;
     flex-shrink: 1;
   }

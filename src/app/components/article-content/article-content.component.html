@@ -1,23 +1,70 @@
-
-
 <div class="center-helper">
-<ng-container *ngIf="article$|async;else notFound ">
-  <div class="container">
-    <markdown class="markdown-body"
-              [data]="(article$ |async).markdown"></markdown>
-  </div>
+  <ng-container *ngIf="article$|async as article;else notFound ">
+    <div class="container">
+      <markdown class="markdown-body"
+                [data]="article.markdown"></markdown>
+    </div>
+
+    <div class="sidebar">
+      <div class="description">
+        <div class="header">分类于</div>
+        <div class="text">
+          {{article.category.name}}
+        </div>
+
+        <div class="header">概述</div>
+        <div class="text link">
+          {{article.description}}
+        </div>
+        <div class="header">发布时间</div>
+        <div class="text">
+          {{article.createdTime|date:'yy-MM-dd HH:mm' }}
+        </div>
+        <div class="header">标签</div>
+        <span class="text link  " *ngFor="let tag of article.tags">
+          {{'#' + tag.name}}
+        </span>
+
+      </div>
+      <ng-container *ngIf="  articlesInTheSameCat$| async as otherArticles "
+      >
+        <div class="description">
+          <div class="header">同类推荐</div>
+          <div class="text link"
+
+               *ngFor="let otherArticle of otherArticles"
+               (click)="checkAddedArticle(otherArticle.id)"
+          >
+            {{otherArticle.name}}
+          </div>
+          <ng-container *ngIf="otherArticles.length>5">
+            <div class="center-helper">
+              <div class="btn"
+                   (click)="refresh()"
+              >换一组
+              </div>
+            </div>
+          </ng-container>
+
+        </div>
+
+      </ng-container>
+
+    </div>
 
 
-</ng-container>
-<ng-template #notFound>
-  <div class="container">
-    <markdown class="markdown-body"
-              [data]="placeHolder.markdown"></markdown>
-    <button class="button"
-      [routerLink]="''"
-    >
-      返回首页
-    </button>
-  </div>
-</ng-template>
+  </ng-container>
+  <ng-template #notFound>
+    <div class="container">
+      <markdown class="markdown-body"
+                [data]="placeHolder.markdown"></markdown>
+      <button class="button"
+              [routerLink]="''"
+      >
+        返回首页
+      </button>
+    </div>
+  </ng-template>
+
+
 </div>

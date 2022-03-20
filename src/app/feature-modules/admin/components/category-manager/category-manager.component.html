@@ -9,7 +9,7 @@
   </label>
   <input type="text" [(ngModel)]="newDescription">
   <button mat-raised-button color="accent"
-    (click)="createANewCategory()"
+          (click)="createANewCategory()"
   >
     新增
   </button>
@@ -44,8 +44,20 @@
         </p>
 
         <div *ngFor="let article of articles$|async">
-          <span>{{article.name}}</span>
-          <button mat-raised-button color="primary">{{cat.name}}</button>
+          <div>标题:{{article.name}}</div>
+          <button mat-flat-button color="primary"
+                  class="x-margin"
+          (click)="checkArticle(article.id)"
+          >
+            查看
+          </button>
+
+          <button mat-flat-button color="primary"
+                  (click)="
+                  deleteAnArticle(article.id,article.name)"
+                  class="x-margin">
+            删除
+          </button>
         </div>
 
 

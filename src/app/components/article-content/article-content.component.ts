@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArticleService} from "../../services/article-service.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {IArticle} from "../../interfaces/iarticle";
-import {combineLatestWith, map, Observable, of, tap} from "rxjs";
+import {BehaviorSubject, combineLatestWith, map, Observable, of, switchMap, tap} from "rxjs";
+import arrayShuffle from "array-shuffle";
 
 
 @Component({
@@ -12,8 +13,11 @@ import {combineLatestWith, map, Observable, of, tap} from "rxjs";
 })
 export class ArticleContentComponent implements OnInit {
 
-
+  private refresher$: BehaviorSubject<any> =
+    new BehaviorSubject(0);
   article$: Observable<IArticle>;
+  articlesInTheSameCat$: Observable<IArticle[]>;
+
   placeHolder: IArticle = {
     id: -1,
     name: '错误：找不到文章',
@@ -30,7 +34,9 @@ console.error('Not Found');
 `
   }
 
-  constructor(private articleService: ArticleService, private route: ActivatedRoute) {
+  constructor(private articleService: ArticleService
+    , private route: ActivatedRoute
+    , private router: Router) {
   }
 
   ngOnInit(): void {
@@ -43,7 +49,42 @@ console.error('Not Found');
         let collection = allArticle.filter(a => a.id === id);
         return collection[0];
       })
-    )
+    );
+
+    this.articlesInTheSameCat$ = this.refresher$
+      .pipe(
+        combineLatestWith(this.article$, this.articleService.articles$)
+        ,
+        map(([_, article, all]) => {
+          return all.filter(a => a.id !== article.id && a.category.id ===
+            article.category.id);
+        })
+        ,
+        map(array => {
+          let shuffled = arrayShuffle(array);
+          if (shuffled.length === 0)
+            return null;
+          return shuffled.slice(0, 5);
+        })
+      )
+
+
+  }
+
+  checkAddedArticle(id: number): void {
+    const urlTree = this.router
+      .createUrlTree(['/article-detail']);
+
+    urlTree.queryParams = {
+      id: id
+    };
+
+    let address = this.router.serializeUrl(urlTree);
+    window.open(address);
+  }
+
+  refresh(): void {
+    this.refresher$.next(0);
   }
 
 }
