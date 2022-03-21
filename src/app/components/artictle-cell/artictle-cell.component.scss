@@ -15,6 +15,9 @@
   display: grid;
   grid-template-columns: 1fr 4rem 6rem;
   grid-template-rows: auto auto auto;
+  &:hover{
+    cursor: pointer;
+  }
 
 }
 

@@ -1,0 +1,32 @@
+<div class="center-helper">
+  <div class="container">
+    <ng-container *ngIf="cat$ | async as cat"
+      >
+    <table>
+      <tr>
+        <th>标题</th>
+        <th>描述</th>
+        <th>访问</th>
+      </tr>
+      <tr *ngFor="let x of cat.articles">
+        <td>
+          <span class="btn">
+            {{x.name}}
+          </span>
+          </td>
+        <td>{{x.description}}</td>
+        <td>
+          <button style="height: 2rem;width: 2.5rem;font-size: 0.9rem;"
+          (click)="openArticle(x.id)"
+          >查{{'  '}}看</button>
+        </td>
+      </tr>
+
+
+    </table>
+
+
+    </ng-container>
+
+  </div>
+</div>

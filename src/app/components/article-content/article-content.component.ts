@@ -40,16 +40,20 @@ console.error('Not Found');
   }
 
   ngOnInit(): void {
-    this.article$ = this.route.queryParamMap.pipe(
-      combineLatestWith(this.articleService.articles$),
-      map(([queryMap, allArticle]) => {
-        let id = Number(queryMap.get('id') ?? -1);
-        if (id < 0 || isNaN(id) || !allArticle.some(a => a.id === id))
-          return null;
-        let collection = allArticle.filter(a => a.id === id);
-        return collection[0];
-      })
-    );
+    // this.article$ = this.route.queryParamMap.pipe(
+    //   combineLatestWith(this.articleService.articles$),
+    //   map(([queryMap, allArticle]) => {
+    //     let id = Number(queryMap.get('id') ?? -1);
+    //     if (id < 0 || isNaN(id) || !allArticle.some(a => a.id === id))
+    //       return null;
+    //     let collection = allArticle.filter(a => a.id === id);
+    //     return collection[0];
+    //   })
+    // );
+    this.article$ =this.route.data
+      .pipe(
+        map(data=>data?.['article'])
+      );
 
     this.articlesInTheSameCat$ = this.refresher$
       .pipe(

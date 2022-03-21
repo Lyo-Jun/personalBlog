@@ -30,6 +30,12 @@ export class ArticleService {
     return this.http.get<ICategory>(this.apiurl + '/article/'
       + id + '/category');
   }
+  getAllCategories(): Observable<ICategory[]> {
+    return this.http.get<ICategory[]>(this.apiurl + '/category');
+  }
+  getAllCategoriesWithArticles(): Observable<ICategory[]> {
+    return this.http.get<ICategory[]>(this.apiurl + '/category/detail');
+  }
 
 
 }

@@ -1,32 +1,64 @@
-<div class="container">
-  <ng-container
-    *ngFor="let i of articles|async|paginate:{
+<div class="center-helper">
+
+
+  <div class="container">
+    <ng-container
+      *ngFor="let i of articles|async|paginate:{
     itemsPerPage:itemsPerPage,
       currentPage:currentPage
     }"
-  >
-    <app-artictle-cell [article]="i">
-    </app-artictle-cell>
-  </ng-container>
-
-  <div class="pagination-option">
-
-    <select [(ngModel)]="itemsPerPage"
-            (ngModelChange)="currentPage=1"
-            class="dropdown"
     >
-      <option *ngFor="let i of [5,10,15,20,30]" [value]="i">
-        {{i + '篇/页'}}
-      </option>
-    </select>
-    <pagination-controls
-      (pageChange)="currentPage = $event"
-      [previousLabel]="'上一页'"
-      [nextLabel]="'下一页'"
-      [responsive]="true"
-    >
-    </pagination-controls>
+      <app-artictle-cell [article]="i">
+      </app-artictle-cell>
+    </ng-container>
+
+    <div class="pagination-option">
+
+      <select [(ngModel)]="itemsPerPage"
+              (ngModelChange)="currentPage=1"
+              class="dropdown"
+      >
+        <option *ngFor="let i of [10,15,20,30]" [value]="i">
+          {{i + '篇/页'}}
+
+        </option>
+      </select>
+      <pagination-controls
+        (pageChange)="currentPage = $event"
+        [previousLabel]="'上一页'"
+        [nextLabel]="'下一页'"
+        [responsive]="true"
+      >
+      </pagination-controls>
+
+    </div>
 
   </div>
+  <div class="sidebar">
+    <ng-container *ngIf="allCategories$ | async as cats;">
+      <div class="description">
 
+
+        <div class="header">
+          随机专题推荐
+        </div>
+        <ng-container *ngFor="let cat of cats;let i =index;">
+          <div class="text link" *ngIf="i<20"
+          >
+            {{ cat.name}}
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="cats.length>=20">
+          <div class="center-helper">
+          <span class="btn" (click)="refreshCats()">
+            换一组</span>
+          </div>
+        </ng-container>
+      </div>
+
+
+    </ng-container>
+
+  </div>
 </div>

@@ -11,6 +11,45 @@
   justify-content: center;
 
 }
+.header {
+  background-color: rgba(255, 182, 193, .3);
+  border-radius: .5rem;
+  padding-left: .3rem;
+  padding-right: .3rem;
+  color: hotpink;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.text {
+  background-color: rgba(245, 203, 159, 0.3);
+  border-radius: .5rem;
+  padding-left: .3rem;
+  padding-right: .3rem;
+  color: orange;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  word-break: break-all;
+}
+.link {
+  &:hover {
+    color: dodgerblue;
+    cursor: pointer;
+  }
+}
+.btn{
+  background-color: rgba(245, 159, 159, 0.3);
+  border-radius: .5rem;
+  padding-left: .3rem;
+  padding-right: .3rem;
+  color: #ff0026;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  justify-self: center;
+  &:hover{
+    cursor: pointer;
+  }
+}
 
 .dropdown {
   outline: none;
@@ -20,7 +59,33 @@
   margin-right: .5rem;
   color: #4d6ef2;
   font-size: 1.02rem;
+  box-shadow: none !important;
+
+
 }
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+
+  margin-left: 1rem;
+
+  max-width: 280px;
+
+}
+.description {
+  margin-top: .7rem;
+  background-color: white;
+  border: rgb(217 217 217) 1px solid !important;
+  border-radius: 5px;
+  padding: .5rem;
+}
+.center-helper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 
 
 ::ng-deep {

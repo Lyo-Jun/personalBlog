@@ -1,0 +1,59 @@
+<div class="center-helper">
+  <div class="container">
+
+
+    <table>
+      <tr>
+        <th>专题</th>
+        <th>概述</th>
+        <th>文章总数</th>
+        <th>访问</th>
+      </tr>
+      <ng-container *ngIf="cats$| async as cats">
+        <tr *ngFor="let cat of cats">
+          <td>
+          <span class="btn "
+
+          >
+            {{cat.name}}
+          </span>
+          </td>
+          <td>{{cat.description}}</td>
+          <td>
+            <div style="display: flex;justify-content: center;">
+              <span class="btn remove-y-margin">{{cat?.articles?.length ?? 0}}</span>
+            </div>
+
+          </td>
+          <td>
+            <div style="display: flex;justify-content: center;">
+            <button style="height: 2rem;width: 2.5rem;font-size: 0.9rem"
+                    (click)="openDetailPage(cat.id)"
+            >查{{'  '}}看</button>
+            </div>
+          </td>
+        </tr>
+
+      </ng-container>
+
+    </table>
+  </div>
+  <div class="sidebar">
+    <div class="description">
+      <div style="display: flex;justify-content: center">
+        <span class="header">
+        搜索专题
+      </span>
+      </div>
+      <input type="text" #input>
+      <button style="height: 2rem;width: 3rem;align-self: center;margin: .5rem 0"
+        (click)="filter()"
+      >
+        搜&nbsp;&nbsp;索
+      </button>
+    </div>
+
+  </div>
+
+
+</div>

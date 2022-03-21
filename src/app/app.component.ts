@@ -8,7 +8,7 @@ import {HttpParams} from "@angular/common/http";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  items: [string, string][] = [['文章', 'articles'], ['分类', 'category'], ['与我联系', 'contact-me']]
+  items: [string, string][] = [['文章', 'articles'], ['专题', 'category'], ['与我联系', 'contact-me']]
   searchContent: string;
   isHamburgerMenuOpen: boolean = false;
 

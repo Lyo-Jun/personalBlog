@@ -7,13 +7,13 @@
 
     <div class="sidebar">
       <div class="description">
-        <div class="header">分类于</div>
-        <div class="text">
+        <div class="header">所属专题</div>
+        <div class="text link">
           {{article.category.name}}
         </div>
 
         <div class="header">概述</div>
-        <div class="text link">
+        <div class="text ">
           {{article.description}}
         </div>
         <div class="header">发布时间</div>
@@ -37,7 +37,7 @@
           >
             {{otherArticle.name}}
           </div>
-          <ng-container *ngIf="otherArticles.length>5">
+          <ng-container *ngIf="otherArticles.length===5">
             <div class="center-helper">
               <div class="btn"
                    (click)="refresh()"

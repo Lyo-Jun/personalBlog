@@ -1,4 +1,4 @@
-import {InjectionToken, NgModule} from '@angular/core';
+import { NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -18,23 +18,37 @@ import "node_modules/prismjs/components/prism-csharp.min";
 import "node_modules/prismjs/components/prism-c.min";
 import "node_modules/prismjs/components/prism-cpp.min";
 import "node_modules/prismjs/components/prism-swift.min";
+import "node_modules/prismjs/components/prism-java.min";
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {OverlayModule} from "@angular/cdk/overlay";
 import {AdminGuard} from "./guards/admin.guard";
+import {CategoryComponent} from './components/category/category.component';
+import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
+import {ArticleResolver} from "./guards/article.resolver";
+import {ArticlesResolver} from "./guards/articles.resolver";
 
 const routes: Routes = [
   {path: '', component: ArticlePadComponent},
-  {path: 'articles', component: ArticlePadComponent,},
-  {path: 'article-detail', component: ArticleContentComponent},
+  {path: 'articles', component: ArticlePadComponent,
+    resolve:{
+    articles:ArticlesResolver
+    }
+  },
+  {path: 'article-detail', component: ArticleContentComponent,
+    resolve:{
+      article:ArticleResolver
+    }
+  },
   {path: 'contact-me', component: ContactMeComponent},
-  {path: 'category', component: ArticleContentComponent},
+  {path: 'category', component: CategoryComponent},
   {
     path: 'admin', canActivate: [AdminGuard],
     loadChildren: () => import('./feature-modules/admin/admin.module').then(m => m.AdminModule)
-  }
+  },
+  {path:'category-detail',component:CategoryDetailComponent}
 ]
 
 
@@ -45,6 +59,8 @@ const routes: Routes = [
     ArtictleCellComponent,
     ContactMeComponent,
     ArticleContentComponent,
+    CategoryComponent,
+    CategoryDetailComponent,
   ],
   imports: [
     BrowserModule,
