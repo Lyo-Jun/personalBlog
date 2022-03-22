@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {ArticleService} from "../../services/article-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {IArticle} from "../../interfaces/iarticle";
@@ -13,10 +13,11 @@ import arrayShuffle from "array-shuffle";
 })
 export class ArticleContentComponent implements OnInit {
 
-  private refresher$: BehaviorSubject<any> =
-    new BehaviorSubject(0);
+  private refresher$ = new BehaviorSubject(0);
   article$: Observable<IArticle>;
   articlesInTheSameCat$: Observable<IArticle[]>;
+  isShow: boolean;
+  topPosToStartShowing:number = 600;
 
   placeHolder: IArticle = {
     id: -1,
@@ -50,9 +51,9 @@ console.error('Not Found');
     //     return collection[0];
     //   })
     // );
-    this.article$ =this.route.data
+    this.article$ = this.route.data
       .pipe(
-        map(data=>data?.['article'])
+        map(data => data?.['article'])
       );
 
     this.articlesInTheSameCat$ = this.refresher$
@@ -73,6 +74,27 @@ console.error('Not Found');
       )
 
 
+  }
+  @HostListener('window:scroll')
+  checkScroll() {
+
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+    console.log('[scroll]', scrollPosition);
+
+    if (scrollPosition >= this.topPosToStartShowing) {
+      this.isShow = true;
+    } else {
+      this.isShow = false;
+    }
+  }
+
+  gotoTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   checkAddedArticle(id: number): void {

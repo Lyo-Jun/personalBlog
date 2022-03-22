@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ArticleService} from "../../services/article-service.service";
 import {IArticle} from "../../interfaces/iarticle";
 import {BehaviorSubject, map, Observable, switchMap, tap} from "rxjs";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {ICategory} from "../../interfaces/icategory";
 import arrayShuffle from "array-shuffle";
 
@@ -18,8 +18,9 @@ export class ArticlePadComponent implements OnInit {
   allCategories$: Observable<ICategory[]>;
   refresher$: BehaviorSubject<any> = new BehaviorSubject(0);
 
-  constructor(private articleService:ArticleService,
-    private activatedRoute: ActivatedRoute) {
+  constructor(private articleService: ArticleService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -65,5 +66,10 @@ export class ArticlePadComponent implements OnInit {
     this.refresher$.next(0);
   }
 
+  openCategory(id: number): void {
+    this.router.navigate(['category-detail'], {
+      queryParams: {id}
+    });
+  }
 
 }

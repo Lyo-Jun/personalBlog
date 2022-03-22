@@ -16,7 +16,7 @@ export class CategoryDetailComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private articleService: ArticleService,
-              private router:Router) {
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -35,10 +35,16 @@ export class CategoryDetailComponent implements OnInit {
 
 
   }
-  openArticle(id:number):void{
+
+  openArticle(id: number): void {
     const url=this.router.createUrlTree(['/article-detail']);
     url.queryParams={id};
     window.open(this.router.serializeUrl(url));
+    // this.router.navigate(['/article-detail'], {
+    //   queryParams: {id}
+    // });
+
   }
+
 
 }

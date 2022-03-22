@@ -44,6 +44,7 @@
         </div>
         <ng-container *ngFor="let cat of cats;let i =index;">
           <div class="text link" *ngIf="i<20"
+               (click)="openCategory(cat.id)"
           >
             {{ cat.name}}
           </div>

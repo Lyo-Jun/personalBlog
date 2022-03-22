@@ -37,10 +37,13 @@ export class CategoryComponent implements OnInit {
 
   }
 
-  openDetailPage(id: number): void {
-    const url = this.router.createUrlTree(['/category-detail']);
-    url.queryParams = {id};
-    window.open(this.router.serializeUrl(url));
+   openDetailPage(id: number):void {
+    // const url = this.router.createUrlTree(['/category-detail']);
+    // url.queryParams = {id};
+    // window.open(this.router.serializeUrl(url));
+     this.router.navigate(['/category-detail'], {
+      queryParams: {id}
+    });
   }
 
   filter(): void {

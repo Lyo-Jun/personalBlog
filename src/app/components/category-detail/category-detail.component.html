@@ -2,10 +2,15 @@
   <div class="container">
     <ng-container *ngIf="cat$ | async as cat"
       >
+      <div class="center-helper">
+        <span class="header larger">专题:{{cat.name}}</span>
+      </div>
+
     <table>
       <tr>
         <th>标题</th>
         <th>描述</th>
+        <th>时间</th>
         <th>访问</th>
       </tr>
       <tr *ngFor="let x of cat.articles">
@@ -15,6 +20,7 @@
           </span>
           </td>
         <td>{{x.description}}</td>
+        <td>{{x.lastModifiedTime| date:'yy年M月dd号'}}</td>
         <td>
           <button style="height: 2rem;width: 2.5rem;font-size: 0.9rem;"
           (click)="openArticle(x.id)"

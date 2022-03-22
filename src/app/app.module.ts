@@ -29,6 +29,7 @@ import {CategoryComponent} from './components/category/category.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
 import {ArticleResolver} from "./guards/article.resolver";
 import {ArticlesResolver} from "./guards/articles.resolver";
+import {GotoContactMeGuard} from "./guards/goto-contact-me.guard";
 
 const routes: Routes = [
   {path: '', component: ArticlePadComponent},
@@ -42,13 +43,15 @@ const routes: Routes = [
       article:ArticleResolver
     }
   },
-  {path: 'contact-me', component: ContactMeComponent},
+  {path: 'contact-me', canActivate:[GotoContactMeGuard]
+  ,component: ContactMeComponent},
   {path: 'category', component: CategoryComponent},
   {
     path: 'admin', canActivate: [AdminGuard],
     loadChildren: () => import('./feature-modules/admin/admin.module').then(m => m.AdminModule)
   },
   {path:'category-detail',component:CategoryDetailComponent}
+
 ]
 
 

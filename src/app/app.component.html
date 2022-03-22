@@ -33,15 +33,15 @@
 >
   <div class="attachment">
     <ul>
-      <li>
+      <li [routerLink]="['/articles']" (click)="isHamburgerMenuOpen=false;">
         <mat-icon>article</mat-icon>
         文章
       </li>
-      <li>
+      <li [routerLink]="['/category']" (click)="isHamburgerMenuOpen=false;">
         <mat-icon>category</mat-icon>
         分类
       </li>
-      <li>
+      <li [routerLink]="['/contact-me']" (click)="isHamburgerMenuOpen=false;">
         <mat-icon>person_add</mat-icon>
         与我联系
       </li>
