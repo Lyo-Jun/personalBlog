@@ -75,8 +75,9 @@ export class AddArticleComponent implements OnInit {
         ids.length > 0 ? ids : undefined
       ).subscribe(article => {
       this.checkAddedArticle(article.id);
+      this.reset();
     });
-    this.reset();
+
 
   }
 

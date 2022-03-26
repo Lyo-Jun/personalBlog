@@ -8,6 +8,10 @@
     集合描述
   </label>
   <input type="text" [(ngModel)]="newDescription">
+  <label>
+    搜索
+  </label>
+  <input type="text" (keydown.enter)="search($event)">
   <button mat-raised-button color="accent"
           (click)="createANewCategory()"
   >

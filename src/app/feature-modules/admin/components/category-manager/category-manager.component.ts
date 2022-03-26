@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryManagerService} from "../../services/category-manager.service";
-import {BehaviorSubject, Observable, Subject, switchMap} from "rxjs";
+import {BehaviorSubject, combineLatestWith, map, Observable, Subject, switchMap} from "rxjs";
 import {ICategory} from "../../../../interfaces/icategory";
 import {IArticle} from "../../../../interfaces/iarticle";
 import {Router} from "@angular/router";
@@ -13,7 +13,10 @@ import {ArticleManagerService} from "../../services/article-manager.service";
 })
 export class CategoryManagerComponent implements OnInit {
 
-  refresher$: BehaviorSubject<any> = new BehaviorSubject<any>(0);
+
+  private refresher$: BehaviorSubject<any> = new BehaviorSubject<any>(0);
+  private filter$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
   categories$: Observable<ICategory[]>;
   selected$: Subject<number> = new Subject<number>();
   articles$: Observable<IArticle[]>;
@@ -34,8 +37,18 @@ export class CategoryManagerComponent implements OnInit {
   ngOnInit(): void {
     this.categories$ = this.refresher$
       .pipe(
-        switchMap(x => this.categoryManager.getAll())
-      );
+        combineLatestWith(this.filter$),
+        switchMap(([_, searchString]) => this.categoryManager.getAll()
+          .pipe(
+            map(all => all.filter(cat => {
+              const searchString_upper = searchString.toUpperCase();
+              return cat.name
+                .toUpperCase()
+                .includes(searchString_upper);
+            })))
+        )
+      )
+
 
     this.articles$ = this.selected$
       .pipe(
@@ -54,8 +67,8 @@ export class CategoryManagerComponent implements OnInit {
       name + '\n吗？\n' + '这会同时删除里面的文章'
     );
     if (!confirmDelete) return;
-    this.categoryManager.deleteOne(id).subscribe();
-    setTimeout(() => this.refresh(), 50);
+    this.categoryManager.deleteOne(id)
+      .subscribe(()=>this.refresh());
 
   }
 
@@ -76,10 +89,9 @@ export class CategoryManagerComponent implements OnInit {
       name: this.newTitle,
       description: this.newDescription,
       id: 0
-    }).subscribe();
+    }).subscribe(()=>this.refresh());
 
 
-    setTimeout(() => this.refresh(), 50);
   }
 
 
@@ -104,8 +116,11 @@ export class CategoryManagerComponent implements OnInit {
       return;
     this.articleManager
       .deleteOne(id)
-      .subscribe();
-    setTimeout(() => this.refresh(), 50);
+      .subscribe(()=>this.refresh());
+
+  }
+  search(event:any):void{
+    this.filter$.next(event.target.value);
   }
 
 }

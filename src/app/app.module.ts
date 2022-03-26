@@ -1,4 +1,4 @@
-import { NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -19,6 +19,7 @@ import "node_modules/prismjs/components/prism-c.min";
 import "node_modules/prismjs/components/prism-cpp.min";
 import "node_modules/prismjs/components/prism-swift.min";
 import "node_modules/prismjs/components/prism-java.min";
+import "node_modules/prismjs/components/prism-dart.min";
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
@@ -26,31 +27,35 @@ import {MatIconModule} from "@angular/material/icon";
 import {OverlayModule} from "@angular/cdk/overlay";
 import {AdminGuard} from "./guards/admin.guard";
 import {CategoryComponent} from './components/category/category.component';
-import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
+import {CategoryDetailComponent} from './components/category-detail/category-detail.component';
 import {ArticleResolver} from "./guards/article.resolver";
 import {ArticlesResolver} from "./guards/articles.resolver";
 import {GotoContactMeGuard} from "./guards/goto-contact-me.guard";
 
 const routes: Routes = [
-  {path: '', component: ArticlePadComponent},
-  {path: 'articles', component: ArticlePadComponent,
-    resolve:{
-    articles:ArticlesResolver
+  {path: '', redirectTo: 'articles',pathMatch:'full'},
+  {
+    path: 'articles', component: ArticlePadComponent,
+    resolve: {
+      articles: ArticlesResolver
     }
   },
-  {path: 'article-detail', component: ArticleContentComponent,
-    resolve:{
-      article:ArticleResolver
+  {
+    path: 'article-detail', component: ArticleContentComponent,
+    resolve: {
+      article: ArticleResolver
     }
   },
-  {path: 'contact-me', canActivate:[GotoContactMeGuard]
-  ,component: ContactMeComponent},
+  {
+    path: 'contact-me', canActivate: [GotoContactMeGuard]
+    , component: ContactMeComponent
+  },
   {path: 'category', component: CategoryComponent},
   {
     path: 'admin', canActivate: [AdminGuard],
     loadChildren: () => import('./feature-modules/admin/admin.module').then(m => m.AdminModule)
   },
-  {path:'category-detail',component:CategoryDetailComponent}
+  {path: 'category-detail', component: CategoryDetailComponent}
 
 ]
 

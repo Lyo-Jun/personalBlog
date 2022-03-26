@@ -36,18 +36,23 @@ export class TagManagerComponent implements OnInit {
       this.tagToAdd = '';
       return;
     }
+
     let confirmAdd = confirm(`你确定要添加标签\n${this.tagToAdd}\n吗？`);
     if (!confirmAdd)
       return;
-    this.tagManager.AddOne(this.tagToAdd).subscribe();
-    setTimeout(() => this.refresh(), 50);
+
+    this.tagManager.AddOne(this.tagToAdd).subscribe(
+      () => this.refresh()
+    );
+
   }
 
   deleteTag(id: number, name: string): void {
     let confirmDelete = confirm(`你却要删除标签\n${name}\n吗？`);
     if (confirmDelete) {
-      this.tagManager.deleteOne(id).subscribe();
-      setTimeout(() => this.refresh(), 50);
+      this.tagManager.deleteOne(id).subscribe(
+        () => this.refresh()
+      );
     }
   }
 
