@@ -1,12 +1,3 @@
-@media screen and (max-width: 810px) {
-
-  .sidebar {
-    display: none;
-  }
-  .description {
-    display: none;
-  }
-}
 
 .center-helper {
   display: flex;
@@ -39,7 +30,6 @@
   margin-top: .5rem;
   margin-bottom: .5rem;
   word-break: break-all;
-
 }
 
 .btn {
@@ -56,23 +46,22 @@
   }
 }
 
-
 .link {
   &:hover {
     color: dodgerblue;
     cursor: pointer;
-
   }
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
+  flex: 1 1;
 
   margin-left: 1rem;
-
+  min-width: 240px;
   max-width: 280px;
+
 
 }
 
@@ -85,18 +74,17 @@
 }
 
 .container {
-  max-width: 700px;
+  width: 700px;
   margin-top: 1rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+
+
   background-color: white;
   border: rgb(217 217 217) 1px solid !important;
   border-radius: 5px;
   padding-bottom: 1.5rem;
-  flex-shrink: 1;
+
 
   .button {
     margin-top: 3rem;
@@ -105,33 +93,28 @@
     width: 6rem;
   }
 
-  .markdown-body {
-    align-self: stretch;
-    flex: 1 1;
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
+
 }
 
+@media screen and (max-width: 840px) {
+  .sidebar {
+    display: none;
+    margin-left: 0;
+
+  }
+  .description {
+    display: none;
+  }
+  .container {
+    width: 100vw;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 
 ::ng-deep {
   .markdown-body {
 
-
-    body {
-      margin: 0 auto;
-
-      color: #444444;
-      line-height: 1;
-      padding: 30px;
-    }
-
-    @media screen and (min-width: 768px) {
-      body {
-        width: 748px;
-        margin: 10px auto;
-      }
-    }
 
     .operator {
       background-color: inherit;
@@ -179,7 +162,7 @@
 
     h5 {
       font-size: 18px;
-      list-style: 23px;
+      line-height: 23px;
     }
 
     a {
@@ -220,17 +203,6 @@
     ol {
       margin-left: 1rem;
     }
-
-    /*pre {
-        padding: 0px 24px;
-        max-width: 800px;
-        white-space: pre-wrap;
-    }
-    code {
-        font-family: Consolas, Monaco, Andale Mono, monospace;
-        line-height: 1.5;
-        font-size: 13px;
-    }*/
 
 
     aside {
@@ -429,7 +401,7 @@
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
       background-color: #0064cd;
       background-repeat: repeat-x;
-      background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+
       background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
       background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
       background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
@@ -546,13 +518,15 @@
       border-radius: 0 0 6px 0;
     }
 
-
     code:not(code[class]) {
       background-color: rgba(255, 182, 193, .3);
       border-radius: .5rem;
       padding-left: .3rem;
       padding-right: .3rem;
       color: hotpink;
+    }
+    pre{
+      border-radius: 10px;
     }
 
     ::ng-deep {
@@ -564,9 +538,5 @@
         }
       }
     }
-
-
   }
-
-
 }

@@ -8,7 +8,7 @@
     <div class="sidebar">
       <div class="description">
         <div class="header">所属专题</div>
-        <div class="text link">
+        <div class="text link" (click)="openCat(article.category.id)">
           {{article.category.name}}
         </div>
 

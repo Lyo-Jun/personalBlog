@@ -18,6 +18,7 @@ import {AddArticleComponent} from './components/article-operation-helpers/add-ar
 import {ListArticleComponent} from './components/article-operation-helpers/list-article/list-article.component';
 import {MarkdownModule} from "ngx-markdown";
 import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
+import {environment} from "../../../environments/environment";
 
 const route: Routes = [
   {
@@ -57,7 +58,7 @@ const route: Routes = [
 
   ],
   providers: [
-    {provide: 'API_URL', useValue: 'https://localhost:7007'},
+    {provide: 'API_URL', useValue: environment.api},
     ArticleManagerService,
     CategoryManagerService,
     TagManagerService

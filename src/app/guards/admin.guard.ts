@@ -12,7 +12,7 @@ export class AdminGuard implements CanActivate {
               @Inject('API_URL') private baseUrl) {
   }
 
-  async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
     : Promise<true | UrlTree> {
     const password = prompt('请输入密码');
     const encrypted = sha256(password);
@@ -21,10 +21,14 @@ export class AdminGuard implements CanActivate {
     const request$ = this.http.get<boolean>(this.baseUrl + '/auth', {
       params: {password: encrypted}
     });
-    const result = await lastValueFrom(request$);
-    if (result)
-      return true;
-    return this.router.createUrlTree(['/']);
+    // const result = await lastValueFrom(request$);
+    // if (result)
+    //   return true;
+    // return this.router.createUrlTree(['/']);
+    return lastValueFrom(request$)
+      .then(isCorrect => {
+        return isCorrect ? true : this.router.createUrlTree(['/']);
+      })
   }
 
 

@@ -11,6 +11,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {ContactMeComponent} from './components/contact-me/contact-me.component';
 import {ArticleContentComponent} from './components/article-content/article-content.component';
 import {MarkdownModule} from "ngx-markdown";
+import {environment} from '../environments/environment'
 
 import "node_modules/prismjs/prism.js";
 import "node_modules/prismjs/components/prism-typescript.min";
@@ -20,6 +21,8 @@ import "node_modules/prismjs/components/prism-cpp.min";
 import "node_modules/prismjs/components/prism-swift.min";
 import "node_modules/prismjs/components/prism-java.min";
 import "node_modules/prismjs/components/prism-dart.min";
+import "node_modules/prismjs/components/prism-yaml.min";
+import "node_modules/prismjs/components/prism-javascript.min";
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
@@ -33,7 +36,7 @@ import {ArticlesResolver} from "./guards/articles.resolver";
 import {GotoContactMeGuard} from "./guards/goto-contact-me.guard";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'articles',pathMatch:'full'},
+  {path: '', redirectTo: 'articles', pathMatch: 'full'},
   {
     path: 'articles', component: ArticlePadComponent,
     resolve: {
@@ -83,7 +86,7 @@ const routes: Routes = [
     OverlayModule
   ],
   providers: [
-    {provide: 'API_URL', useValue: 'https://localhost:7007'}
+    {provide: 'API_URL', useValue: environment.api}
   ],
   bootstrap: [AppComponent,
   ]

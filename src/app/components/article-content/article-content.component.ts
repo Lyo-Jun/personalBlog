@@ -17,7 +17,7 @@ export class ArticleContentComponent implements OnInit {
   article$: Observable<IArticle>;
   articlesInTheSameCat$: Observable<IArticle[]>;
   isShow: boolean;
-  topPosToStartShowing:number = 600;
+  topPosToStartShowing: number = 600;
 
   placeHolder: IArticle = {
     id: -1,
@@ -71,16 +71,16 @@ console.error('Not Found');
             return null;
           return shuffled.slice(0, 5);
         })
-      )
+      );
 
 
   }
+
   @HostListener('window:scroll')
   checkScroll() {
 
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-    console.log('[scroll]', scrollPosition);
 
     if (scrollPosition >= this.topPosToStartShowing) {
       this.isShow = true;
@@ -101,16 +101,22 @@ console.error('Not Found');
     const urlTree = this.router
       .createUrlTree(['/article-detail']);
 
-    urlTree.queryParams = {
-      id: id
-    };
-
+    urlTree.queryParams = {id};
     let address = this.router.serializeUrl(urlTree);
     window.open(address);
   }
 
   refresh(): void {
     this.refresher$.next(0);
+  }
+
+  openCat(id: number): void {
+    const urlTree = this.router
+      .createUrlTree(['/category-detail']);
+    urlTree.queryParams = {id};
+    let address=this.router.serializeUrl(urlTree);
+    window.open(address);
+
   }
 
 }
