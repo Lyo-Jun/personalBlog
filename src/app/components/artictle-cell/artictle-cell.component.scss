@@ -17,6 +17,7 @@
   grid-template-rows: auto auto auto;
   &:hover{
     cursor: pointer;
+    .title{color: deeppink}
   }
 
 }

@@ -5,52 +5,53 @@
                 [data]="article.markdown"></markdown>
     </div>
 
-    <div class="sidebar">
-      <div class="description">
-        <div class="header">所属专题</div>
-        <div class="text link" (click)="openCat(article.category.id)">
-          {{article.category.name}}
-        </div>
+      <div class="sidebar">
+        <div class="description">
+          <div class="header">所属专题</div>
+          <div class="text link" (click)="openCat(article.category.id)">
+            {{article.category.name}}
+          </div>
 
-        <div class="header">概述</div>
-        <div class="text ">
-          {{article.description}}
-        </div>
-        <div class="header">发布时间</div>
-        <div class="text">
-          {{article.createdTime|date:'yy-MM-dd HH:mm' }}
-        </div>
-        <div class="header">标签</div>
-        <span class="text link  " *ngFor="let tag of article.tags">
+          <div class="header">概述</div>
+          <div class="text ">
+            {{article.description}}
+          </div>
+          <div class="header">发布时间</div>
+          <div class="text">
+            {{article.createdTime|date:'yy-MM-dd HH:mm' }}
+          </div>
+          <div class="header">标签</div>
+          <span class="text link  " *ngFor="let tag of article.tags">
           {{'#' + tag.name}}
         </span>
 
-      </div>
-      <ng-container *ngIf="  articlesInTheSameCat$| async as otherArticles "
-      >
-        <div class="description">
-          <div class="header">同类推荐</div>
-          <div class="text link"
-
-               *ngFor="let otherArticle of otherArticles"
-               (click)="checkAddedArticle(otherArticle.id)"
-          >
-            {{otherArticle.name}}
-          </div>
-          <ng-container *ngIf="otherArticles.length===5">
-            <div class="center-helper">
-              <div class="btn"
-                   (click)="refresh()"
-              >换一组
-              </div>
-            </div>
-          </ng-container>
-
         </div>
+        <ng-container *ngIf="  articlesInTheSameCat$| async as otherArticles "
+        >
+          <div class="description">
+            <div class="header">同类推荐</div>
+            <div class="text link"
 
-      </ng-container>
+                 *ngFor="let otherArticle of otherArticles"
+                 (click)="checkAddedArticle(otherArticle.id)"
+            >
+              {{otherArticle.name}}
+            </div>
+            <ng-container *ngIf="otherArticles.length===5">
+              <div class="center-helper">
+                <div class="btn"
+                     (click)="refresh()"
+                >换一组
+                </div>
+              </div>
+            </ng-container>
 
-    </div>
+          </div>
+
+        </ng-container>
+
+      </div>
+
 
 
   </ng-container>
@@ -69,7 +70,7 @@
 
 </div>
 <div class="scroll-to-top-button">
-  <button mat-fab color="warn"  *ngIf="isShow" (click)="gotoTop()">
+  <button mat-fab color="warn" *ngIf="isShow" (click)="gotoTop()">
     <mat-icon>north</mat-icon>
 
   </button>

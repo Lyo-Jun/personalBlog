@@ -17,7 +17,7 @@ export class ArticleContentComponent implements OnInit {
   article$: Observable<IArticle>;
   articlesInTheSameCat$: Observable<IArticle[]>;
   isShow: boolean;
-  topPosToStartShowing: number = 600;
+  topPosToStartShowing: number = 250;
 
   placeHolder: IArticle = {
     id: -1,
