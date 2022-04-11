@@ -8,7 +8,6 @@ import {ArtictleCellComponent} from './components/artictle-cell/artictle-cell.co
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxPaginationModule} from "ngx-pagination";
-import {ContactMeComponent} from './components/contact-me/contact-me.component';
 import {ArticleContentComponent} from './components/article-content/article-content.component';
 import {MarkdownModule} from "ngx-markdown";
 import {environment} from '../environments/environment'
@@ -51,7 +50,7 @@ const routes: Routes = [
   },
   {
     path: 'contact-me', canActivate: [GotoContactMeGuard]
-    , component: ContactMeComponent
+    , component:CategoryComponent
   },
   {path: 'category', component: CategoryComponent},
   {
@@ -68,7 +67,7 @@ const routes: Routes = [
     AppComponent,
     ArticlePadComponent,
     ArtictleCellComponent,
-    ContactMeComponent,
+
     ArticleContentComponent,
     CategoryComponent,
     CategoryDetailComponent,

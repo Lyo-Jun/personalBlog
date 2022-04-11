@@ -55,8 +55,8 @@
 
 .sidebar {
   position: -webkit-sticky;
-  position: sticky ;
-  top: 0 ;
+  position: sticky;
+  top: 0;
   align-self: flex-start;
   display: flex;
   flex-direction: column;
@@ -81,7 +81,6 @@
   margin-top: 1rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-
 
   background-color: white;
   border: rgb(217 217 217) 1px solid !important;
@@ -109,10 +108,13 @@
     display: none;
   }
   .container {
-    width: 100vw;
-    padding-left: 0;
-    padding-right: 0;
+    width: calc(100vw - 2rem);
+    padding-left: 1rem;
+    padding-right: 1rem;
+
   }
+
+
 }
 
 ::ng-deep {
@@ -528,7 +530,8 @@
       padding-right: .3rem;
       color: hotpink;
     }
-    pre{
+
+    pre {
       border-radius: 10px;
     }
 
