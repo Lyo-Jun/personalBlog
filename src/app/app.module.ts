@@ -22,6 +22,10 @@ import "node_modules/prismjs/components/prism-java.min";
 import "node_modules/prismjs/components/prism-dart.min";
 import "node_modules/prismjs/components/prism-yaml.min";
 import "node_modules/prismjs/components/prism-javascript.min";
+import "node_modules/prismjs/components/prism-jsx.min";
+import "node_modules/prismjs/components/prism-tsx.min";
+
+
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";

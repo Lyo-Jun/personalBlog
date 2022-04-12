@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'http://localhost:4300'
+  api: 'http://120.27.153.238:4300'
 };
